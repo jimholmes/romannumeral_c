@@ -1,6 +1,7 @@
 #include <check.h>
 #include	<stdlib.h>
 #include <stdio.h>
+#include <stdbool.h>
 #include "roman.h"
 
 START_TEST (initial) {
@@ -11,6 +12,13 @@ END_TEST
 START_TEST (i_eq_1) {
 	int romVal = roman_to_int('i');
 	ck_assert_int_eq( romVal,1);
+}
+END_TEST
+
+START_TEST (reject_invalid) {
+
+	bool isValid=is_valid_roman_input("ai");
+	ck_assert_int_eq(1, isValid);
 }
 END_TEST
 
@@ -25,6 +33,7 @@ Suite * roman_suite(void) {
 
     tcase_add_test(tc_core, initial);
     tcase_add_test(tc_core, i_eq_1);
+    tcase_add_test(tc_core, reject_invalid);
     suite_add_tcase(s, tc_core);
 
     return s;
@@ -47,15 +56,16 @@ main ( int argc, char *argv[] )
 }
 
 
-/* 
- * ===  FUNCTION  ======================================================================
- *         Name:  roman_to_int
- *  Description:  
- * =====================================================================================
- */
-	int
+int
 roman_to_int ( char roman )
 {
 	int intVal = 1;
 	return intVal;
-}		/* -----  end of function roman_to_int  ----- */
+}		
+
+
+	bool
+is_valid_roman_input ( char roman_string[] )
+{
+	return true;
+}	
