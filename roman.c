@@ -1,11 +1,19 @@
 #include <check.h>
 #include	<stdlib.h>
 #include <stdio.h>
+#include "roman.h"
 
 START_TEST (initial) {
 	ck_assert_int_eq(1,1);
 }
 END_TEST
+
+START_TEST (i_eq_1) {
+	int romVal = roman_to_int('i');
+	ck_assert_int_eq( romVal,1);
+}
+END_TEST
+
 
 Suite * roman_suite(void) {
 	Suite *s;
@@ -16,6 +24,7 @@ Suite * roman_suite(void) {
     tc_core = tcase_create("Core");
 
     tcase_add_test(tc_core, initial);
+    tcase_add_test(tc_core, i_eq_1);
     suite_add_tcase(s, tc_core);
 
     return s;
@@ -36,3 +45,17 @@ main ( int argc, char *argv[] )
     srunner_free(sr);
     return (number_failed == 0) ? EXIT_SUCCESS : EXIT_FAILURE;
 }
+
+
+/* 
+ * ===  FUNCTION  ======================================================================
+ *         Name:  roman_to_int
+ *  Description:  
+ * =====================================================================================
+ */
+	int
+roman_to_int ( char roman )
+{
+	int intVal = 1;
+	return intVal;
+}		/* -----  end of function roman_to_int  ----- */
